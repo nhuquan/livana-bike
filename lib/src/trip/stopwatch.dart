@@ -10,7 +10,7 @@ class StopWatch extends StatefulWidget {
 class StopWatchState extends State<StopWatch> {
   bool isTicking = false;
   int seconds = 0;
-  int miliseconds = 0;
+  int miliSeconds = 0;
   int minutes = 0;
   int hours = 0;
   late Timer timer;
@@ -30,7 +30,7 @@ class StopWatchState extends State<StopWatch> {
     });
   }
 
-  void _createlab() {
+  void createLap() {
     setState(() {
       labs.add('$hours hours $minutes minutes $seconds seconds');
     });
@@ -38,11 +38,11 @@ class StopWatchState extends State<StopWatch> {
 
   void _onTick(Timer time) {
     setState(() {
-      ++miliseconds;
+      ++miliSeconds;
 
-      if (miliseconds >= 1000) {
+      if (miliSeconds >= 1000) {
         seconds++;
-        miliseconds = 0;
+        miliSeconds = 0;
       }
 
       if (seconds >= 60) {
@@ -71,16 +71,9 @@ class StopWatchState extends State<StopWatch> {
       ),
       body: Column(
         children: [
-          Expanded(child: _buildListOfLap()),
           Expanded(child: _buildStopWatch(context)),
         ],
       ),
-    );
-  }
-
-  Widget _buildListOfLap() {
-    return ListView(
-      children: labs.map((lap) => ListTile(title: Text(lap))).toList(),
     );
   }
 
@@ -106,7 +99,7 @@ class StopWatchState extends State<StopWatch> {
             SizedBox(
               width: 70,
               child: Text(
-                (miliseconds % 1000).toString().padLeft(3, '0'),
+                (miliSeconds % 1000).toString().padLeft(3, '0'),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
@@ -130,7 +123,7 @@ class StopWatchState extends State<StopWatch> {
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               ),
-              onPressed: _createlab,
+              onPressed: createLap,
               child: Text('End'),
             ),
           ],
