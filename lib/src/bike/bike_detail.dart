@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'stopwatch.dart';
-import '../model/bike_model.dart';
+import '../trip/stopwatch.dart';
+import 'bike_model.dart';
 
 class BikeDetail extends StatelessWidget {
   final BikeModel model;

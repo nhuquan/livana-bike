@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'bike_detail.dart';
-import '../model/bike_model.dart';
+import 'bike_model.dart';
 
 const bikes = [
   BikeModel('Yamaha Nouvo 3', 1000, 12, 5000),
